@@ -8,19 +8,35 @@ html
     script(type="text/javascript",src="bootstrap3.min.js")
     script(type="text/javascript",src="index.js")
   body
-    #timer ????
-    a#min60.btn.btn-info.fbtn(onclick="adjust(-60)") -60
-    a#min10.btn.btn-info.fbtn(onclick="adjust(-10)") -10
-    a#toggle.btn.btn-primary(onclick="toggle()") RUN
-    a#reset.btn.btn-warning(onclick="reset()") RESET
-    a#hide.btn.btn-default(onclick="show()") &#xd60;
-    a#add10.btn.btn-info.fbtn(onclick="adjust(10)") +10
-    a#add60.btn.btn-info.fbtn(onclick="adjust(60)") +60
-    a#def10.btn.btn-success.fbtn(onclick="adjust(0,10)") 10 sec
-    a#def30.btn.btn-success.fbtn(onclick="adjust(0,30)") 30 sec
-    a#def60.btn.btn-success.fbtn(onclick="adjust(0,60)") 1 min
-    a#def180.btn.btn-success.fbtn(onclick="adjust(0,180)") 3 min
-    a#def300.btn.btn-success.fbtn(onclick="adjust(0,300)") 5 min
-    a#def600.btn.btn-success.fbtn(onclick="adjust(0,600)") 10 min
-    a#def900.btn.btn-success.fbtn(onclick="adjust(0,900)") 15 min
-    a#def1800.btn.btn-success.fbtn(onclick="adjust(0,1800)") 30 min
+    .app-shell
+      .circle-area
+        .circle-border
+        #timer 00:01:00
+        .mascot.hydrant#hydrant(title="消防栓") 🚰
+        .mascot.truck#truck(title="消防噴水車") 🚒
+      .controls.card
+        .custom-time.row
+          .col-sm-12.col-md-6.col-lg-5
+            label.control-label(for="hoursInput") 小時
+            input#hoursInput.form-control(type="number", min="0", value="0")
+          .col-sm-12.col-md-6.col-lg-4
+            label.control-label(for="minutesInput") 分鐘
+            input#minutesInput.form-control(type="number", min="0", value="1")
+          .col-sm-12.col-md-6.col-lg-3
+            label.control-label(for="secondsInput") 秒
+            input#secondsInput.form-control(type="number", min="0", value="0")
+          .col-xs-12.apply-col
+            a#applyCustom.btn.btn-success.btn-block(onclick="applyCustomTime()") 設定倒數時間
+        .adjustments
+          .btn-group
+            a#minusHour.btn.btn-info.fbtn(onclick="adjust(-3600)") -1 小時
+            a#minusMinute.btn.btn-info.fbtn(onclick="adjust(-60)") -1 分鐘
+            a#minusHalfMinute.btn.btn-info.fbtn(onclick="adjust(-30)") -30 秒
+          .btn-group.run-group
+            a#toggle.btn.btn-primary(onclick="toggle()") RUN
+            a#reset.btn.btn-warning(onclick="reset()") RESET
+          .btn-group
+            a#addHalfMinute.btn.btn-info.fbtn(onclick="adjust(30)") +30 秒
+            a#addMinute.btn.btn-info.fbtn(onclick="adjust(60)") +1 分鐘
+            a#addHour.btn.btn-info.fbtn(onclick="adjust(3600)") +1 小時
+        p.helper 倒數完畢時，消防噴水車會繞完一圈並與消防栓相遇。

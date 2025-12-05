@@ -4,115 +4,154 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  background: radial-gradient(circle at 20% 20%, #0c213d, #050b16 60%);
+  color: #e8f6ff;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: moz-none;
   -ms-user-select: none;
   user-select: none;
+  font-family: "Century Gothic", "Noto Sans TC", "Helvetica", sans-serif;
 }
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.circle-area {
+  position: relative;
+  width: min(90vw, 540px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.circle-border {
+  position: absolute;
+  inset: 0;
+  border: 8px solid #5ed4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(94, 212, 255, 0.35), 0 0 0 10px rgba(94, 212, 255, 0.1);
+  background: radial-gradient(circle at 50% 50%, rgba(94, 212, 255, 0.12), transparent 60%);
+}
+
 #timer {
-  width: 100%;
-  height: 100%;
-  line-height: 100%;
-  background: #000;
-  color: #fff;
+  position: relative;
+  z-index: 2;
+  width: 62%;
+  height: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0c1528;
+  border-radius: 50%;
+  border: 4px solid #1a5dab;
+  color: #f3fbff;
   text-align: center;
   font-weight: 700;
-  font-family: century gothic;
+  font-size: clamp(32px, 8vw, 60px);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
 }
-#hide,
-#toggle,
-#reset,
-#min10,
-#min60,
-#add10,
-#add60,
-#def10,
-#def30,
-#def60,
-#def180,
-#def300,
-#def600,
-#def900,
-#def1800 {
+
+.mascot {
   position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -210px;
-  width: 170px;
-  height: 44px;
-  line-height: 30px;
+  width: 78px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  border-radius: 22px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s linear;
 }
-#reset {
-  margin-left: 50px;
+
+.hydrant {
+  background: linear-gradient(135deg, #ffb3a3, #ffdfd3);
+  color: #c0272d;
 }
-#hide {
-  margin-left: -30px;
-  width: 70px;
+
+.truck {
+  background: linear-gradient(135deg, #ff6b6b, #ffc46b);
+  color: #20283f;
 }
-#min10,
-#min60,
-#add10,
-#add60 {
-  width: 50px;
+
+.controls {
+  width: min(980px, 98vw);
+  padding: 18px 20px 14px;
+  background: #0f2036;
+  border-radius: 14px;
+  border: 1px solid rgba(94, 212, 255, 0.4);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
 }
-#def10,
-#def30,
-#def60,
-#def180,
-#def300,
-#def600,
-#def900,
-#def1800 {
-  bottom: 5px;
-  top: auto;
-  width: 70px;
+
+.custom-time {
+  width: 100%;
+  margin: 0;
 }
-#min10 {
-  margin-left: -270px;
+
+.custom-time .form-control {
+  background: #0c1528;
+  color: #f3fbff;
+  border: 1px solid #3e6fb3;
 }
-#min60 {
-  margin-left: -330px;
+
+.apply-col {
+  margin-top: 12px;
 }
-#add10 {
-  margin-left: 230px;
+
+.adjustments {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-#add60 {
-  margin-left: 290px;
+
+.btn-group .btn {
+  min-width: 96px;
+  font-weight: 700;
 }
-#def10 {
-  margin-left: -285px;
+
+.run-group .btn {
+  min-width: 120px;
 }
-#def30 {
-  margin-left: -205px;
+
+.helper {
+  margin: 14px 0 0;
+  color: #9bcaf0;
+  font-size: 14px;
 }
-#def60 {
-  margin-left: -125px;
-}
-#def180 {
-  margin-left: -45px;
-}
-#def300 {
-  margin-left: 35px;
-}
-#def600 {
-  margin-left: 115px;
-}
-#def900 {
-  margin-left: 195px;
-}
-#def1800 {
-  margin-left: 275px;
-}
-#audio {
-  position: absolute;
-  bottom: 30px;
-  right: 10px;
-  z-index: 10;
-}
-#xxx {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+
+@media (max-width: 720px) {
+  .adjustments {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn-group .btn {
+    flex: 1 1 auto;
+  }
+
+  .run-group {
+    justify-content: center;
+    gap: 8px;
+  }
 }
