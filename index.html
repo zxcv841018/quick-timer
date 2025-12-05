@@ -1,1 +1,57 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" type="text/css" href="bootstrap3.min.css"><link rel="stylesheet" type="text/css" href="index.css"><script type="text/javascript" src="jquery-1.10.2.min.js"></script><script type="text/javascript" src="bootstrap3.min.js"></script><script type="text/javascript" src="index.js"></script></head><body><div id="timer">????</div><a class="btn btn-info fbtn" id="min60" onclick="adjust(-60)">-60</a><a class="btn btn-info fbtn" id="min10" onclick="adjust(-10)">-10</a><a class="btn btn-primary" id="toggle" onclick="toggle()">RUN</a><a class="btn btn-warning" id="reset" onclick="reset()">RESET</a><a class="btn btn-default" id="hide" onclick="show()">&#xd60;</a><a class="btn btn-info fbtn" id="add10" onclick="adjust(10)">+10</a><a class="btn btn-info fbtn" id="add60" onclick="adjust(60)">+60</a><a class="btn btn-success fbtn" id="def10" onclick="adjust(0,10)">10 sec</a><a class="btn btn-success fbtn" id="def30" onclick="adjust(0,30)">30 sec</a><a class="btn btn-success fbtn" id="def60" onclick="adjust(0,60)">1 min</a><a class="btn btn-success fbtn" id="def180" onclick="adjust(0,180)">3 min</a><a class="btn btn-success fbtn" id="def300" onclick="adjust(0,300)">5 min</a><a class="btn btn-success fbtn" id="def600" onclick="adjust(0,600)">10 min</a><a class="btn btn-success fbtn" id="def900" onclick="adjust(0,900)">15 min</a><a class="btn btn-success fbtn" id="def1800" onclick="adjust(0,1800)">30 min</a></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap3.min.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap3.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="circle-area">
+        <div class="circle-border"></div>
+        <div id="timer">00:01:00</div>
+        <div class="mascot hydrant" id="hydrant" title="消防栓">🚰</div>
+        <div class="mascot truck" id="truck" title="消防噴水車">🚒</div>
+      </div>
+      <div class="controls card">
+        <div class="custom-time row">
+          <div class="col-sm-12 col-md-6 col-lg-5">
+            <label class="control-label" for="hoursInput">小時</label>
+            <input id="hoursInput" type="number" min="0" value="0" class="form-control" />
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <label class="control-label" for="minutesInput">分鐘</label>
+            <input id="minutesInput" type="number" min="0" value="1" class="form-control" />
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <label class="control-label" for="secondsInput">秒</label>
+            <input id="secondsInput" type="number" min="0" value="0" class="form-control" />
+          </div>
+          <div class="col-xs-12 apply-col">
+            <a id="applyCustom" class="btn btn-success btn-block" onclick="applyCustomTime()">設定倒數時間</a>
+          </div>
+        </div>
+        <div class="adjustments">
+          <div class="btn-group">
+            <a class="btn btn-info fbtn" id="minusHour" onclick="adjust(-3600)">-1 小時</a>
+            <a class="btn btn-info fbtn" id="minusMinute" onclick="adjust(-60)">-1 分鐘</a>
+            <a class="btn btn-info fbtn" id="minusHalfMinute" onclick="adjust(-30)">-30 秒</a>
+          </div>
+          <div class="btn-group run-group">
+            <a class="btn btn-primary" id="toggle" onclick="toggle()">RUN</a>
+            <a class="btn btn-warning" id="reset" onclick="reset()">RESET</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn btn-info fbtn" id="addHalfMinute" onclick="adjust(30)">+30 秒</a>
+            <a class="btn btn-info fbtn" id="addMinute" onclick="adjust(60)">+1 分鐘</a>
+            <a class="btn btn-info fbtn" id="addHour" onclick="adjust(3600)">+1 小時</a>
+          </div>
+        </div>
+        <p class="helper">倒數完畢時，消防噴水車會繞完一圈並與消防栓相遇。</p>
+      </div>
+    </div>
+  </body>
+</html>
